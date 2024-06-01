@@ -38,14 +38,6 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testUpdateProduct() {
-        Product updatedProduct = new Product(1, "Updated Product", 200f, "Updated description", "updated.png");
-        Optional<Product> product = productService.updateProduct(updatedProduct);
-        assertTrue(product.isPresent());
-        assertEquals("Updated Product", product.get().name());
-    }
-
-    @Test
     public void testDeleteProduct() {
         assertTrue(productService.deleteProduct(1));
         assertFalse(productService.getProductById(1).isPresent());
@@ -69,5 +61,19 @@ public class ProductServiceTest {
     @Test
     public void testDeleteNonExistentProduct() {
         assertFalse(productService.deleteProduct(99));
+    }
+
+
+    @Test
+    public void testUpdateProduct() {
+        Product updatedProduct = new Product(5, "Updated Product", 200f, "Updated description", "updated.png");
+        productService.updateProduct(updatedProduct);
+
+        Optional<Product> product = productService.getProductById(5);
+        assertTrue(product.isPresent());
+        assertEquals("Updated Product", product.get().name());
+        assertEquals(200f, product.get().price());
+        assertEquals("Updated description", product.get().description());
+        assertEquals("updated.png", product.get().image());
     }
 }

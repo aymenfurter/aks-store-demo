@@ -1,7 +1,6 @@
 package com.microsoft.azure;
 
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,6 @@ import com.microsoft.azure.productservice.model.Product;
 import com.microsoft.azure.productservice.services.ProductService;
 
 import jakarta.ws.rs.core.MediaType;
-import java.util.Collections;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -27,7 +25,7 @@ class ProductServiceApplicationTests {
     @BeforeEach
     public void setup() {
         sampleProduct = new Product(1, "Sample Product", 100f, "Sample description", "sample.png");
-        productService.addProduct(sampleProduct);  // Pre-populate the service with a sample product
+        productService.addProduct(sampleProduct);  
     }
 
     @Test

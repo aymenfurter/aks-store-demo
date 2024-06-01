@@ -52,13 +52,13 @@ public class ProductService {
 
     public Optional<Product> updateProduct(Product product) {
         var existingProduct = getProductById(product.id());
-
+    
         if (existingProduct.isPresent()) {
             var index = products.indexOf(existingProduct.get());
-            products.set(index, product);
+                products.set(index + 1, product); 
             return Optional.of(product);
         }
-
+    
         return Optional.empty();
     }
 

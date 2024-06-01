@@ -43,6 +43,7 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
+      <version>1.0.0.Final</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
